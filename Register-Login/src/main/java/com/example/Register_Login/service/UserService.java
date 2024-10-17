@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserService {
@@ -17,6 +18,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
     public User registerUser(User user) {
 
         if (userRepository.findByEmail(user.getEmail()) != null) {
@@ -70,10 +73,50 @@ public class UserService {
         });
     }
 
-    public void resetPassword(Long userId, String newPassword) {
-        userRepository.findById(userId).ifPresent(user -> {
-            user.setPassword(newPassword);
-            userRepository.save(user);
-        });
+//    public void resetPassword(Long userId, String newPassword) {
+//        userRepository.findById(userId).ifPresent(user -> {
+//            user.setPassword(newPassword);
+//            userRepository.save(user);
+//        });
+//    }
+    private Map<String, String> verificationCodes = new HashMap<>();
+
+    // Generate a random verification code
+    private String generateVerificationCode() {
+        Random random = new Random();
+        int code = 100000 + random.nextInt(900000);  // 6-digit code
+        return String.valueOf(code);
+    }
+
+    public String sendResetCode(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new IllegalArgumentException("User with this email does not exist.");
+        }
+
+        // Generate and store verification code
+        String verificationCode = generateVerificationCode();
+        verificationCodes.put(email, verificationCode);
+
+        return verificationCode;  // Return the verification code
+    }
+
+    public void verifyCodeAndResetPassword(String email, String verificationCode, String newPassword) {
+        if (!verificationCodes.containsKey(email) || !verificationCodes.get(email).equals(verificationCode)) {
+            throw new IllegalArgumentException("Invalid verification code.");
+        }
+
+        // Once verified, reset the password
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new IllegalArgumentException("User with this email does not exist.");
+        }
+
+        // Encrypt the new password and update user
+        user.setPassword(newPassword);
+        userRepository.save(user);
+
+        // Clear the verification code
+        verificationCodes.remove(email);
     }
 }
