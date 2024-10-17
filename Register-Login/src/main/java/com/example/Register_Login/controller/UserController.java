@@ -1,6 +1,5 @@
 package com.example.Register_Login.controller;
 
-import com.example.Register_Login.Dtos.ResetPasswordRequestDto;
 import com.example.Register_Login.model.User;
 import com.example.Register_Login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

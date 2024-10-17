@@ -1,4 +1,3 @@
-// UserService.java
 package com.example.Register_Login.service;
 
 import com.example.Register_Login.model.User;
@@ -18,8 +17,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
     public User registerUser(User user) {
 
         if (userRepository.findByEmail(user.getEmail()) != null) {
@@ -73,12 +70,6 @@ public class UserService {
         });
     }
 
-//    public void resetPassword(Long userId, String newPassword) {
-//        userRepository.findById(userId).ifPresent(user -> {
-//            user.setPassword(newPassword);
-//            userRepository.save(user);
-//        });
-//    }
     private Map<String, String> verificationCodes = new HashMap<>();
 
     // Generate a random verification code
