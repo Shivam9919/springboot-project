@@ -29,14 +29,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @CreationTimestamp
-    @Column(updatable = false, name = "created_at")
-    private Date createdAt;
-
-    @UpdateTimestamp
-    @Column(name = "updated_at")
-    private Date updatedAt;
-
     public Integer getId() {
         return id;
     }
@@ -69,24 +61,6 @@ public class User {
         return this;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public User setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public User setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-        return this;
-    }
-
     @Override
     public String toString() {
         return "User{"
@@ -94,8 +68,6 @@ public class User {
                 + ", fullName='" + fullName + '\''
                 + ", email='" + email + '\''
                 + ", password='" + password + '\''
-                + ", createdAt=" + createdAt
-                + ", updatedAt=" + updatedAt
                 + '}';
     }
 }

@@ -33,5 +33,6 @@ public class Purchase {
     private Ebook ebook;
 
     private Double amountPaid;
+
     private String purchaseDate;
 }

@@ -30,7 +30,7 @@ public class Ebook {
     @Column(nullable = false)
     private String genre;
 
-    @Column(nullable = false)
+    @Column(name = "publication_date") // Ensure this matches your column name
     private LocalDate publicationDate;
 
     private String description; // Description of the book
