@@ -11,7 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
-@Table(name = "users_")
+@Table(name = "user_")
 @Entity
 public class User {
 
