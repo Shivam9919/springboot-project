@@ -106,7 +106,6 @@ public class UserService {
         // Encrypt the new password and update user
         user.setPassword(newPassword);
         userRepository.save(user);
-
         // Clear the verification code
         verificationCodes.remove(email);
     }
