@@ -1,8 +1,8 @@
-# Spring Boot Microservices with Spring Cloud Gateway
+# Spring Boot Microservices with Project
 
 ## Overview
 
-This project is a set of microservices built using Spring Boot, designed to demonstrate the integration of SpringBoot Gateway, Spring Security with JWT, and centralized exception handling with AOP (Aspect-Oriented Programming). The architecture is modular, promoting scalability and maintainability.
+This project is a set of microservices built using Spring Boot, designed to demonstrate the integration of SpringBoot Project , Spring Security with JWT, and centralized exception handling with AOP (Aspect-Oriented Programming). The architecture is modular, promoting scalability and maintainability.
 
 ## Features
 
