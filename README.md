@@ -1,4 +1,4 @@
-# Spring Boot Microservices with Project
+# Spring Boot Microservices Project
 
 ## Overview
 
