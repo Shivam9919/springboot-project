@@ -53,18 +53,22 @@ public class ExcelService {
     // Helper method to extract cell value
     private Object getCellValue(Cell cell) {
         switch (cell.getCellType()) {
-            case STRING:
+            case STRING -> {
                 return cell.getStringCellValue();
-            case NUMERIC:
+            }
+            case NUMERIC -> {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     return cell.getDateCellValue(); // Date value
                 } else {
                     return cell.getNumericCellValue(); // Numeric value
                 }
-            case BOOLEAN:
+            }
+            case BOOLEAN -> {
                 return cell.getBooleanCellValue();
-            default:
+            }
+            default -> {
                 return cell.toString(); // For other cell types
+            }
         }
     }
 }
